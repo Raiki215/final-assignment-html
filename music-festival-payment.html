@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お支払い方法選択 - LiveHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/music-festival-payment.css">
+</head>
+
+<body>
+  <!-- ナビゲーションバー -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <i class="bi bi-music-note-beamed"></i> LiveHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">ホーム</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="music-festival-list.html">イベント一覧</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="music-artist-list.html">アーティスト</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="music-festival-ticket.html">チケット購入</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="music-festival-myticket.html">マイチケット</a>
+          </li>
+        </ul>
+        <a href="music-login-page.html" class="btn btn-light ms-3 fw-bold">
+          <i class="bi bi-person-circle"></i> ログイン
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ページヘッダー -->
+  <div class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#" class="text-white">ホーム</a></li>
+          <li class="breadcrumb-item"><a href="#" class="text-white">イベント詳細</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">お支払い</li>
+        </ol>
+      </nav>
+      <h1 class="display-4 fw-bold mb-3">お支払い方法選択</h1>
+      <p class="lead">SUMMER MUSIC FESTIVAL 2024</p>
+      <p class="mb-0"><i class="bi bi-calendar-event"></i> 2024年12月3日 @ 東京ビッグサイト</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- ステップインジケーター -->
+    <div class="step-indicator">
+      <div class="step completed">
+        <div class="step-circle">
+          <i class="bi bi-check-lg"></i>
+        </div>
+        <div class="fw-bold">チケット選択</div>
+      </div>
+      <div class="step completed">
+        <div class="step-circle">
+          <i class="bi bi-check-lg"></i>
+        </div>
+        <div class="fw-bold">座席選択</div>
+      </div>
+      <div class="step completed">
+        <div class="step-circle">
+          <i class="bi bi-check-lg"></i>
+        </div>
+        <div class="fw-bold">お客様情報</div>
+      </div>
+      <div class="step active">
+        <div class="step-circle">4</div>
+        <div class="fw-bold">お支払い</div>
+      </div>
+      <div class="step">
+        <div class="step-circle">5</div>
+        <div class="fw-bold">完了</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- メインコンテンツ -->
+      <div class="col-lg-8">
+        <div class="payment-card mb-4">
+          <h3 class="fw-bold mb-4"><i class="bi bi-credit-card text-primary"></i> お支払い方法を選択してください</h3>
+
+          <form id="paymentForm">
+            <!-- 支払い方法選択 -->
+            <div class="payment-methods mb-4">
+              <!-- クレジットカード -->
+              <div class="payment-option" data-payment="credit">
+                <div class="d-flex align-items-center">
+                  <input type="radio" class="form-check-input me-3" name="paymentMethod" id="credit" value="credit"
+                    checked>
+                  <div class="flex-grow-1">
+                    <h5 class="fw-bold mb-1">
+                      <i class="bi bi-credit-card-2-front"></i> クレジットカード
+                    </h5>
+                    <p class="text-muted mb-0">Visa, Mastercard, JCB, American Express</p>
+                  </div>
+                  <div class="payment-icons">
+                    <i class="bi bi-credit-card text-primary fs-4"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- コンビニ決済 -->
+              <div class="payment-option" data-payment="convenience">
+                <div class="d-flex align-items-center">
+                  <input type="radio" class="form-check-input me-3" name="paymentMethod" id="convenience"
+                    value="convenience">
+                  <div class="flex-grow-1">
+                    <h5 class="fw-bold mb-1">
+                      <i class="bi bi-shop"></i> コンビニ決済
+                    </h5>
+                    <p class="text-muted mb-0">セブンイレブン、ローソン、ファミリーマート</p>
+                  </div>
+                  <div class="payment-icons">
+                    <i class="bi bi-shop text-success fs-4"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 銀行振込 -->
+              <div class="payment-option" data-payment="bank">
+                <div class="d-flex align-items-center">
+                  <input type="radio" class="form-check-input me-3" name="paymentMethod" id="bank" value="bank">
+                  <div class="flex-grow-1">
+                    <h5 class="fw-bold mb-1">
+                      <i class="bi bi-bank"></i> 銀行振込
+                    </h5>
+                    <p class="text-muted mb-0">各種銀行からのお振込み</p>
+                  </div>
+                  <div class="payment-icons">
+                    <i class="bi bi-bank text-info fs-4"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PayPal -->
+              <div class="payment-option" data-payment="paypal">
+                <div class="d-flex align-items-center">
+                  <input type="radio" class="form-check-input me-3" name="paymentMethod" id="paypal" value="paypal">
+                  <div class="flex-grow-1">
+                    <h5 class="fw-bold mb-1">
+                      <i class="bi bi-paypal"></i> PayPal
+                    </h5>
+                    <p class="text-muted mb-0">PayPalアカウントで支払い</p>
+                  </div>
+                  <div class="payment-icons">
+                    <i class="bi bi-paypal text-primary fs-4"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- クレジットカード情報入力フォーム -->
+            <div id="creditCardForm" class="payment-form">
+              <h5 class="fw-bold mb-3">クレジットカード情報</h5>
+
+              <div class="mb-3">
+                <label for="cardNumber" class="form-label">カード番号 <span class="text-danger">*</span></label>
+                <input type="text" class="form-control form-control-lg" id="cardNumber"
+                  placeholder="1234 5678 9012 3456" maxlength="19">
+              </div>
+
+              <div class="mb-3">
+                <label for="cardName" class="form-label">カード名義 <span class="text-danger">*</span></label>
+                <input type="text" class="form-control form-control-lg" id="cardName" placeholder="TARO YAMADA">
+                <small class="text-muted">カードに記載されている通りに入力してください</small>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="expiryDate" class="form-label">有効期限 <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control form-control-lg" id="expiryDate" placeholder="MM/YY"
+                    maxlength="5">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="cvv" class="form-label">セキュリティコード <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control form-control-lg" id="cvv" placeholder="123" maxlength="4">
+                </div>
+              </div>
+
+              <div class="alert alert-custom alert-info border-info">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-shield-check text-info me-3 fs-4"></i>
+                  <div>
+                    <h6 class="fw-bold mb-1">安全な決済</h6>
+                    <p class="mb-0">お客様のカード情報は暗号化されて安全に送信されます。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- コンビニ決済フォーム -->
+            <div id="convenienceForm" class="payment-form d-none">
+              <h5 class="fw-bold mb-3">コンビニを選択</h5>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                  <div class="convenience-option">
+                    <input type="radio" class="btn-check" name="convenience-store" id="seven" autocomplete="off"
+                      checked>
+                    <label class="btn btn-outline-primary w-100 p-3" for="seven">
+                      <i class="bi bi-shop fs-2 d-block mb-2"></i>
+                      <span class="fw-bold">セブンイレブン</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="convenience-option">
+                    <input type="radio" class="btn-check" name="convenience-store" id="lawson" autocomplete="off">
+                    <label class="btn btn-outline-primary w-100 p-3" for="lawson">
+                      <i class="bi bi-shop fs-2 d-block mb-2"></i>
+                      <span class="fw-bold">ローソン</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="convenience-option">
+                    <input type="radio" class="btn-check" name="convenience-store" id="familymart" autocomplete="off">
+                    <label class="btn btn-outline-primary w-100 p-3" for="familymart">
+                      <i class="bi bi-shop fs-2 d-block mb-2"></i>
+                      <span class="fw-bold">ファミリーマート</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="alert alert-custom alert-warning border-warning">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-exclamation-triangle-fill text-warning me-3 fs-4"></i>
+                  <div>
+                    <h6 class="fw-bold mb-2">お支払い期限</h6>
+                    <p class="mb-0">注文確定後、3日以内にお支払いください。期限を過ぎるとキャンセルされます。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 銀行振込フォーム -->
+            <div id="bankForm" class="payment-form d-none">
+              <h5 class="fw-bold mb-3">振込先情報</h5>
+
+              <div class="bank-info mb-4">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="text-muted">銀行名</label>
+                    <p class="fw-bold">LiveHub銀行</p>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="text-muted">支店名</label>
+                    <p class="fw-bold">本店</p>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="text-muted">口座種別</label>
+                    <p class="fw-bold">普通</p>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="text-muted">口座番号</label>
+                    <p class="fw-bold">1234567</p>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <label class="text-muted">口座名義</label>
+                    <p class="fw-bold">カ)ライブハブ</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="alert alert-custom alert-warning border-warning">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-exclamation-triangle-fill text-warning me-3 fs-4"></i>
+                  <div>
+                    <h6 class="fw-bold mb-2">お振込み期限</h6>
+                    <p class="mb-0">注文確定後、3日以内にお振込みください。振込手数料はお客様負担となります。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PayPalフォーム -->
+            <div id="paypalForm" class="payment-form d-none">
+              <h5 class="fw-bold mb-3">PayPal決済</h5>
+
+              <div class="text-center py-5">
+                <i class="bi bi-paypal text-primary" style="font-size: 80px;"></i>
+                <p class="mt-4 mb-0">次へ進むボタンをクリックすると、PayPalのログイン画面に移動します。</p>
+              </div>
+
+              <div class="alert alert-custom alert-info border-info">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-info-circle text-info me-3 fs-4"></i>
+                  <div>
+                    <h6 class="fw-bold mb-1">PayPalについて</h6>
+                    <p class="mb-0">PayPalアカウントをお持ちでない場合、新規登録が必要です。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ボタン -->
+            <div class="d-flex gap-3 mt-4">
+              <a href="music-festival-customer-info.html" class="btn btn-outline-secondary btn-lg flex-fill">
+                <i class="bi bi-arrow-left"></i> 戻る
+              </a>
+              <button type="submit" class="btn btn-primary btn-lg flex-fill">
+                購入を確定する <i class="bi bi-check-lg"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- 注文サマリー -->
+      <div class="col-lg-4">
+        <div class="summary-card">
+          <h4 class="fw-bold mb-4">最終確認</h4>
+
+          <!-- イベント情報 -->
+          <div class="event-info mb-4">
+            <h6 class="fw-bold text-muted mb-2">イベント</h6>
+            <p class="mb-1 fw-bold">SUMMER MUSIC FESTIVAL 2024</p>
+            <p class="text-muted mb-0"><i class="bi bi-calendar-event"></i> 2024年12月3日</p>
+            <p class="text-muted"><i class="bi bi-geo-alt"></i> 東京ビッグサイト</p>
+          </div>
+
+          <hr>
+
+          <!-- お客様情報 -->
+          <div class="mb-3">
+            <h6 class="fw-bold text-muted mb-3">お客様情報</h6>
+            <div id="customerInfo">
+              <p class="mb-1"><i class="bi bi-person"></i> <span id="customerName">山田 太郎</span></p>
+              <p class="mb-1"><i class="bi bi-envelope"></i> <span id="customerEmail">example@email.com</span></p>
+              <p class="mb-0"><i class="bi bi-telephone"></i> <span id="customerPhone">090-1234-5678</span></p>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- チケット情報 -->
+          <div class="mb-3">
+            <h6 class="fw-bold text-muted mb-3">チケット</h6>
+            <div class="d-flex justify-content-between mb-2">
+              <span>一般チケット</span>
+              <span class="fw-bold">¥8,000</span>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+              <span class="badge" style="background: var(--primary-color);">座席: A-5</span>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- 料金詳細 -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-2">
+              <span>チケット料金</span>
+              <span>¥8,000</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">手数料</span>
+              <span class="text-muted">¥800</span>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold mb-0">合計金額</h5>
+            <h4 class="fw-bold mb-0 text-primary">¥8,800</h4>
+          </div>
+
+          <div class="alert alert-custom alert-success border-success mt-4">
+            <div class="text-center">
+              <i class="bi bi-shield-check text-success fs-4"></i>
+              <p class="mb-0 mt-2"><small>安全な決済システム</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <footer class="py-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <h5 class="fw-bold mb-3"><i class="bi bi-music-note-beamed"></i> LiveHub</h5>
+          <p class="text-light">音楽で繋がる、最高の体験をあなたに。</p>
+        </div>
+        <div class="col-md-2 mb-3">
+          <h6 class="fw-bold mb-3">サイト情報</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-light text-decoration-none">About</a></li>
+            <li><a href="#" class="text-light text-decoration-none">利用規約</a></li>
+            <li><a href="#" class="text-light text-decoration-none">プライバシー</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 mb-3">
+          <h6 class="fw-bold mb-3">サポート</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-light text-decoration-none">ヘルプ</a></li>
+            <li><a href="#" class="text-light text-decoration-none">お問い合わせ</a></li>
+            <li><a href="#" class="text-light text-decoration-none">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h6 class="fw-bold mb-3">フォローする</h6>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-light"><i class="bi bi-twitter fs-4"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-instagram fs-4"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-youtube fs-4"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-spotify fs-4"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="border-light">
+      <p class="text-center text-light mb-0">&copy; 2024 LiveHub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // 支払い方法選択時の処理
+    document.querySelectorAll('.payment-option').forEach(option => {
+      option.addEventListener('click', function () {
+        const radio = this.querySelector('input[type="radio"]');
+        radio.checked = true;
+
+        // すべてのフォームを非表示
+        document.querySelectorAll('.payment-form').forEach(form => {
+          form.classList.add('d-none');
+        });
+
+        // すべての選択肢の選択状態を解除
+        document.querySelectorAll('.payment-option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+
+        // 現在の選択肢を選択状態に
+        this.classList.add('selected');
+
+        // 選択された支払い方法に対応するフォームを表示
+        const paymentType = radio.value;
+        if (paymentType === 'credit') {
+          document.getElementById('creditCardForm').classList.remove('d-none');
+        } else if (paymentType === 'convenience') {
+          document.getElementById('convenienceForm').classList.remove('d-none');
+        } else if (paymentType === 'bank') {
+          document.getElementById('bankForm').classList.remove('d-none');
+        } else if (paymentType === 'paypal') {
+          document.getElementById('paypalForm').classList.remove('d-none');
+        }
+      });
+    });
+
+    // 初期状態でクレジットカードを選択
+    document.querySelector('.payment-option').classList.add('selected');
+
+    // お客様情報の読み込み
+    window.addEventListener('DOMContentLoaded', function () {
+      const customerInfo = JSON.parse(localStorage.getItem('customerInfo') || '{}');
+
+      if (customerInfo.lastName && customerInfo.firstName) {
+        document.getElementById('customerName').textContent =
+          `${customerInfo.lastName} ${customerInfo.firstName}`;
+      }
+      if (customerInfo.email) {
+        document.getElementById('customerEmail').textContent = customerInfo.email;
+      }
+      if (customerInfo.phone) {
+        document.getElementById('customerPhone').textContent = customerInfo.phone;
+      }
+    });
+
+    // フォーム送信処理
+    document.getElementById('paymentForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+      // 決済処理（実際の実装では決済APIを呼び出す）
+      alert('購入が完了しました！\nチケット情報をメールでお送りします。');
+
+      // マイチケットページへ遷移
+      window.location.href = 'music-festival-myticket.html';
+    });
+
+    // カード番号の自動フォーマット
+    document.getElementById('cardNumber')?.addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\s/g, '');
+      let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+      e.target.value = formattedValue;
+    });
+
+    // 有効期限の自動フォーマット
+    document.getElementById('expiryDate')?.addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length >= 2) {
+        value = value.slice(0, 2) + '/' + value.slice(2, 4);
+      }
+      e.target.value = value;
+    });
+  </script>
+</body>
+
+</html>

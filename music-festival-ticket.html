@@ -377,11 +377,11 @@
             </div>
           </div>
 
-          <button class="btn btn-lg w-100 fw-bold mb-2"
+          <button id="proceedBtn" class="btn btn-lg w-100 fw-bold mb-2"
             style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border: none;">
             次へ進む <i class="bi bi-arrow-right"></i>
           </button>
-          <button class="btn btn-outline-secondary btn-lg w-100">
+          <button class="btn btn-outline-secondary btn-lg w-100" onclick="window.history.back()">
             <i class="bi bi-arrow-left"></i> 戻る
           </button>
 
@@ -500,6 +500,34 @@
       document.getElementById('serviceFee').textContent = `¥${serviceFee.toLocaleString()}`;
       document.getElementById('totalPrice').textContent = `¥${total.toLocaleString()}`;
     }
+
+    // 次へ進むボタンのクリックイベント
+    document.getElementById('proceedBtn').addEventListener('click', function () {
+      // チケットと座席が選択されているか確認
+      if (selectedTicketPrice === 0) {
+        alert('チケットを選択してください。');
+        return;
+      }
+
+      if (selectedSeats.length === 0) {
+        alert('座席を選択してください。');
+        return;
+      }
+
+      // 選択情報をローカルストレージに保存
+      const ticketInfo = {
+        ticketType: selectedTicketType,
+        ticketPrice: selectedTicketPrice,
+        seats: selectedSeats,
+        serviceFee: Math.floor(selectedTicketPrice * 0.1),
+        totalPrice: selectedTicketPrice + Math.floor(selectedTicketPrice * 0.1)
+      };
+
+      localStorage.setItem('ticketInfo', JSON.stringify(ticketInfo));
+
+      // お客様情報入力ページへ遷移
+      window.location.href = 'music-festival-customer-info.html';
+    });
   </script>
 </body>
 
