@@ -500,6 +500,11 @@
       // 決済処理（実際の実装では決済APIを呼び出す）
       alert('購入が完了しました！\nチケット情報をメールでお送りします。');
 
+      // ローカルストレージをクリア
+      localStorage.removeItem('customerInfo');
+      localStorage.removeItem('selectedTicket');
+      localStorage.removeItem('selectedSeat');
+
       // マイチケットページへ遷移
       window.location.href = 'music-festival-myticket.html';
     });
