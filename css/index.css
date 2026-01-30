@@ -1,15 +1,16 @@
 :root {
-    --primary-color: #ff6b6b;
-    --secondary-color: #4ecdc4;
-    --accent-color: #ffe66d;
+    --primary-color: #ef4444;
+    --secondary-color: #3b82f6;
+    --accent-color: #8b5cf6;
+    --dark-bg: #18181b;
 }
 
 .navbar {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: var(--dark-bg);
 }
 
 .hero-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
     padding: 100px 0;
     margin-bottom: 40px;
@@ -116,7 +117,7 @@
 }
 
 footer {
-    background-color: #1f2937;
+    background-color: var(--dark-bg);
     color: white;
     margin-top: 60px;
 }
